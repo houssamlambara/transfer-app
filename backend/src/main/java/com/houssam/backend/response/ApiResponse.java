@@ -1,6 +1,5 @@
 package com.houssam.backend.response;
 
-import lombok.Builder;
 
 public class ApiResponse<T> {
     private String message;
