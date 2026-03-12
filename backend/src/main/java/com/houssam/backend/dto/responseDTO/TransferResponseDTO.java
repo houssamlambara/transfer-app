@@ -16,8 +16,8 @@ import java.time.LocalDateTime;
 public class TransferResponseDTO {
 
     private String id;
-    private String sender;
-    private String receiver;
+    private UserResponseDTO sender;
+    private UserResponseDTO receiver;
     private BigDecimal amount;
     private TransferStatus status;
     private LocalDateTime createdAt;

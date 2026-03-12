@@ -15,11 +15,11 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class TransferRequestDTO {
 
-    @NotBlank(message = "Sender is required")
-    private String sender;
+    @NotBlank(message = "Sender ID is required")
+    private String senderId;
 
-    @NotBlank(message = "Receiver is required")
-    private String receiver;
+    @NotBlank(message = "Receiver ID is required")
+    private String receiverId;
 
     @NotNull(message = "Amount is required")
     private BigDecimal amount;
