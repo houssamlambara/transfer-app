@@ -8,8 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -34,7 +32,7 @@ public class Transfer {
     private User receiver;
 
     @Column(nullable = false)
-    private BigDecimal amount;
+    private double amount;
 
     @Builder.Default
     @Enumerated(EnumType.STRING)

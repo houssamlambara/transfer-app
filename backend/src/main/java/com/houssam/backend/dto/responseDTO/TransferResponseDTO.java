@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -18,7 +17,7 @@ public class TransferResponseDTO {
     private String id;
     private UserResponseDTO sender;
     private UserResponseDTO receiver;
-    private BigDecimal amount;
+    private double amount;
     private TransferStatus status;
     private LocalDateTime createdAt;
 }

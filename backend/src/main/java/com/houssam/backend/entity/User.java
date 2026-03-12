@@ -6,8 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "users")
 @Data
@@ -27,5 +25,5 @@ public class User {
     private String email;
 
     @Column(nullable = false)
-    private BigDecimal balance;
+    private double balance;
 }

@@ -27,22 +27,22 @@ public class TransferServiceImpl implements TransferService {
     @Override
     @Transactional
     public TransferResponseDTO createTransfer(TransferRequestDTO request) {
-        User sender = userRepository.findById(request.getSenderId())
+        User sender = userRepository.findByEmail(request.getSenderEmail())
                 .orElseThrow(() -> new IllegalArgumentException("Expéditeur introuvable"));
-                
-        User receiver = userRepository.findById(request.getReceiverId())
+
+        User receiver = userRepository.findByEmail(request.getReceiverEmail())
                 .orElseThrow(() -> new IllegalArgumentException("Bénéficiaire introuvable"));
 
         if (sender.getId().equals(receiver.getId())) {
             throw new IllegalArgumentException("L'expéditeur et le bénéficiaire doivent être différents");
         }
 
-        if (sender.getBalance().compareTo(request.getAmount()) < 0) {
+        if (sender.getBalance() < (request.getAmount())) {
             throw new IllegalArgumentException("Solde insuffisant pour ce virement");
         }
 
-        sender.setBalance(sender.getBalance().subtract(request.getAmount()));
-        receiver.setBalance(receiver.getBalance().add(request.getAmount()));
+        sender.setBalance(sender.getBalance() - request.getAmount());
+        receiver.setBalance(receiver.getBalance() + request.getAmount());
 
         userRepository.save(sender);
         userRepository.save(receiver);
@@ -51,7 +51,6 @@ public class TransferServiceImpl implements TransferService {
                 .sender(sender)
                 .receiver(receiver)
                 .amount(request.getAmount())
-                .status(TransferStatus.COMPLETED)
                 .build();
 
         Transfer saved = transferRepository.save(transfer);

@@ -8,8 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-import java.math.BigDecimal;
-
 @SpringBootApplication
 @EnableJpaAuditing
 public class BackendApplication {
@@ -25,16 +23,16 @@ public class BackendApplication {
                 userRepository.save(User.builder()
                         .fullName("Houssam Lambaraa")
                         .email("houssam@gmail.com")
-                        .balance(new BigDecimal("5000.00"))
+                        .balance(5000.00)
                         .build());
 
                 userRepository.save(User.builder()
                         .fullName("Recruteur Test")
                         .email("recruteur@entreprise.com")
-                        .balance(new BigDecimal("100.00"))
+                        .balance(100.00)
                         .build());
-                        
-                System.out.println("✅ Utilisateurs de test créés avec succès en base H2");
+
+                System.out.println("Utilisateurs de test créés avec succès en base H2");
             }
         };
     }
