@@ -1,6 +1,10 @@
 package com.houssam.backend.response;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Builder
 public class ApiResponse<T> {
     private String message;
     private T data;

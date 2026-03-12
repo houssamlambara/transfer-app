@@ -1,5 +1,6 @@
 package com.houssam.backend.dto.responseDTO;
 
+import com.houssam.backend.enums.TransferStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +19,6 @@ public class TransferResponseDTO {
     private String sender;
     private String receiver;
     private BigDecimal amount;
-    private String status;
+    private TransferStatus status;
     private LocalDateTime createdAt;
 }
