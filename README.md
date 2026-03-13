@@ -5,7 +5,7 @@ Application de gestion de virements construite avec **Spring Boot** (backend) et
 ## Stack technique
 
 - Backend: Java 17, Spring Boot 3, Spring Web, Spring Data JPA, Validation, H2
-- Frontend: Angular 21, Tailwind CSS, RxJS
+- Frontend: Angular 21, NG-Zorro (Ant Design), Tailwind CSS, RxJS
 - Build: Maven Wrapper (`mvnw`), npm
 
 ## Prérequis
