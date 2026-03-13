@@ -1,4 +1,4 @@
-package com.houssam.backend.service.implimentation;
+package com.houssam.backend.service.implementation;
 
 import com.houssam.backend.dto.responseDTO.UserResponseDTO;
 import com.houssam.backend.repository.UserRepository;
@@ -27,3 +27,4 @@ public class UserServiceImpl implements UserService {
                 .toList();
     }
 }
+
