@@ -8,6 +8,15 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 
+import { provideNzIcons } from 'ng-zorro-antd/icon';
+import {
+  MenuFoldOutline,
+  MenuUnfoldOutline,
+  DashboardOutline,
+  ReloadOutline,
+  DownOutline
+} from '@ant-design/icons-angular/icons';
+
 registerLocaleData(en);
 
 export const appConfig: ApplicationConfig = {
@@ -17,6 +26,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimationsAsync(),
     provideNzI18n(en_US),
-    importProvidersFrom(FormsModule)
+    importProvidersFrom(FormsModule),
+    provideNzIcons([MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, ReloadOutline, DownOutline])
   ]
 };

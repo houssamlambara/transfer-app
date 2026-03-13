@@ -48,6 +48,7 @@ export class TransferListComponent implements OnInit {
     this.transferService.updateTransferStatus(id, newStatus).subscribe({
       next: (updatedTransfer) => {
         this.messageService.success('Statut mis à jour !');
+
         const index = this.transfers.findIndex(t => t.id === updatedTransfer.id);
         if (index !== -1) {
           this.transfers = [
@@ -56,6 +57,8 @@ export class TransferListComponent implements OnInit {
             ...this.transfers.slice(index + 1)
           ];
         }
+
+        this.cdr.detectChanges();
       },
       error: () => {
         this.messageService.error('Erreur lors de la mise à jour du statut');
