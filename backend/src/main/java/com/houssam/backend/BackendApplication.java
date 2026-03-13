@@ -27,8 +27,8 @@ public class BackendApplication {
                         .build());
 
                 userRepository.save(User.builder()
-                        .fullName("Recruteur Test")
-                        .email("recruteur@entreprise.com")
+                        .fullName("Test")
+                        .email("test@gmail.com")
                         .balance(100.00)
                         .build());
 
