@@ -1,0 +1,15 @@
+{
+  "message": "Utilisateurs récupérés avec succès",
+  "data": [
+    {
+      "id": "f5daf97d-8ccb-4246-abbe-bf786ab1a5c8",
+      "email": "houssam@gmail.com",
+      "fullName": "Houssam Lambaraa"
+    },
+    {
+      "id": "3697af5d-4763-4742-870f-57c590c69d8d",
+      "email": "recruteur@entreprise.com",
+      "fullName": "Recruteur Test"
+    }
+  ]
+}

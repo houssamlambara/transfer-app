@@ -1,0 +1,21 @@
+{
+  "message": "Transfers recupere avec succes",
+  "data": [
+    {
+      "id": "e7276b59-9dae-4c4e-bfd0-85880862ec4c",
+      "sender": {
+        "id": "f5daf97d-8ccb-4246-abbe-bf786ab1a5c8",
+        "email": "houssam@gmail.com",
+        "fullName": "Houssam Lambaraa"
+      },
+      "receiver": {
+        "id": "3697af5d-4763-4742-870f-57c590c69d8d",
+        "email": "recruteur@entreprise.com",
+        "fullName": "Recruteur Test"
+      },
+      "amount": 100.00,
+      "status": "COMPLETED",
+      "createdAt": "2026-03-12T15:19:46.755872"
+    }
+  ]
+}

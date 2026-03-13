@@ -1,0 +1,53 @@
+GET http://localhost:8080/api/users
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-12T152015.200.json
+
+###
+
+GET http://localhost:8080/api/transfers
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-12T151958.200.json
+
+###
+
+POST http://localhost:8080/api/transfers
+Content-Type: application/json
+Content-Length: 132
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "senderId": "f5daf97d-8ccb-4246-abbe-bf786ab1a5c8",
+  "receiverId": "3697af5d-4763-4742-870f-57c590c69d8d",
+  "amount": 100.00
+}
+
+<> 2026-03-12T151946.201.json
+
+###
+
+GET http://localhost:8080/api/transfers
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-12T151909.200.json
+
+###
+
+GET http://localhost:8080/api/transfers
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-12T151855.200.json
+
+###
+
