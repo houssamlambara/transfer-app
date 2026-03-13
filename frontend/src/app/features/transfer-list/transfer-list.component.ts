@@ -1,28 +1,29 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
-import { DatePipe, DecimalPipe } from '@angular/common';
+import { DatePipe, DecimalPipe, CommonModule } from '@angular/common';
 import { TransferService } from '../../core/services/transfer.service';
-import { ToastService } from '../../core/services/toast.service';
 import { Transfer } from '../../core/models/transfer';
 import { TransferStatus } from '../../core/models/transfer-status';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzTagModule } from 'ng-zorro-antd/tag';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-transfer-list',
   standalone: true,
-  imports: [DatePipe, DecimalPipe],
-  templateUrl: './transfer-list.component.html',
+  imports: [CommonModule, DatePipe, DecimalPipe, NzTableModule, NzTagModule, NzButtonModule, NzDropDownModule, NzIconModule],
+  templateUrl: './transfer-list.component.html'
 })
 export class TransferListComponent implements OnInit {
   transfers: Transfer[] = [];
   isLoading = true;
   transferStatus = TransferStatus;
-  openDropdownId: string | null = null;
 
   private transferService = inject(TransferService);
-  private toast = inject(ToastService);
-
-  constructor(private cdr: ChangeDetectorRef) {
-
-  }
+  private messageService = inject(NzMessageService);
+  private cdr = inject(ChangeDetectorRef);
 
   ngOnInit(): void {
     this.loadTransfers();
@@ -34,29 +35,19 @@ export class TransferListComponent implements OnInit {
       next: (data) => {
         this.transfers = data;
         this.isLoading = false;
-        this.cdr.detectChanges()
+        this.cdr.detectChanges();
       },
       error: () => {
-        this.toast.error('Erreur lors du chargement des virements');
+        this.messageService.error('Erreur lors du chargement des virements');
         this.isLoading = false;
       }
     });
   }
 
-  toggleDropdown(id: string, event: Event): void {
-    event.stopPropagation();
-    this.openDropdownId = this.openDropdownId === id ? null : id;
-  }
-
-  closeAllDropdowns(): void {
-    this.openDropdownId = null;
-  }
-
   updateStatus(id: string, newStatus: TransferStatus): void {
-    this.openDropdownId = null;
     this.transferService.updateTransferStatus(id, newStatus).subscribe({
       next: (updatedTransfer) => {
-        this.toast.success('Statut mis à jour !');
+        this.messageService.success('Statut mis à jour !');
         const index = this.transfers.findIndex(t => t.id === updatedTransfer.id);
         if (index !== -1) {
           this.transfers = [
@@ -67,23 +58,18 @@ export class TransferListComponent implements OnInit {
         }
       },
       error: () => {
-        this.toast.error('Erreur lors de la mise à jour du statut');
+        this.messageService.error('Erreur lors de la mise à jour du statut');
       }
     });
   }
 
-  getStatusClasses(status: TransferStatus): string {
+  getStatusColor(status: TransferStatus): string {
     switch (status) {
-      case TransferStatus.COMPLETED: return 'bg-green-100 text-green-800';
-      case TransferStatus.FAILED:    return 'bg-red-100 text-red-800';
-      case TransferStatus.CANCELLED: return 'bg-gray-100 text-gray-600';
-      case TransferStatus.PENDING:   return 'bg-yellow-100 text-yellow-800';
-      default:                       return 'bg-gray-100 text-gray-600';
+      case TransferStatus.COMPLETED: return 'success';
+      case TransferStatus.FAILED: return 'error';
+      case TransferStatus.CANCELLED: return 'default';
+      case TransferStatus.PENDING: return 'processing';
+      default: return 'default';
     }
   }
-
-  canUpdateStatus(status: TransferStatus): boolean {
-    return status !== TransferStatus.COMPLETED && status !== TransferStatus.CANCELLED;
-  }
 }
-

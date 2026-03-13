@@ -1,103 +1,46 @@
-<div class="max-w-xl mx-auto">
-  <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+<div style="padding: 24px; display: flex; justify-content: center;">
+  <nz-card nzTitle="Initier un nouveau virement" style="width: 100%; max-width: 600px;">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()" nzLayout="vertical">
 
-    <!-- Title -->
-    <div class="mb-6">
-      <h2 class="text-xl font-semibold text-gray-800">Initier un nouveau virement</h2>
-      <p class="text-sm text-gray-500 mt-1">Remplissez les informations ci-dessous pour effectuer un virement.</p>
-    </div>
+      <nz-form-item>
+        <nz-form-label nzRequired>Compte Expéditeur</nz-form-label>
+        <nz-form-control nzErrorTip="Veuillez sélectionner un expéditeur!">
+          <nz-select formControlName="senderEmail" nzPlaceHolder="Sélectionnez un expéditeur" [nzLoading]="isLoadingUsers" nzShowSearch>
+            <nz-option *ngFor="let user of users" [nzValue]="user.email" [nzLabel]="user.fullName + ' (' + user.email + ')'"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
 
-    <form [formGroup]="validateForm" (ngSubmit)="submitForm()" class="space-y-5">
+      <nz-form-item>
+        <nz-form-label nzRequired>Compte Bénéficiaire</nz-form-label>
+        <nz-form-control nzErrorTip="Veuillez sélectionner un bénéficiaire!">
+          <nz-select formControlName="receiverEmail" nzPlaceHolder="Sélectionnez un bénéficiaire" [nzLoading]="isLoadingUsers" nzShowSearch>
+            <nz-option *ngFor="let user of users" [nzValue]="user.email" [nzLabel]="user.fullName + ' (' + user.email + ')'"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
 
-      <!-- Expéditeur -->
-      <div>
-        <label for="senderEmail" class="block text-sm font-medium text-gray-700 mb-1.5">
-          Compte Expéditeur <span class="text-red-500">*</span>
-        </label>
-        <select
-          id="senderEmail"
-          formControlName="senderEmail"
-          class="w-full px-3.5 py-2.5 bg-white border rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-400 transition-colors"
-          [class.border-red-400]="validateForm.get('senderEmail')?.invalid && validateForm.get('senderEmail')?.dirty"
-          [class.border-gray-300]="!(validateForm.get('senderEmail')?.invalid && validateForm.get('senderEmail')?.dirty)"
-        >
-          <option [value]="null" disabled selected>
-            {{ isLoadingUsers ? 'Chargement...' : 'Sélectionnez un expéditeur' }}
-          </option>
-          @for (user of users; track user.id) {
-            <option [value]="user.email">{{ user.fullName }} ({{ user.email }})</option>
-          }
-        </select>
-        @if (validateForm.get('senderEmail')?.invalid && validateForm.get('senderEmail')?.dirty) {
-          <p class="mt-1 text-xs text-red-500">Veuillez sélectionner un expéditeur.</p>
-        }
-      </div>
-
-      <!-- Bénéficiaire -->
-      <div>
-        <label for="receiverEmail" class="block text-sm font-medium text-gray-700 mb-1.5">
-          Compte Bénéficiaire <span class="text-red-500">*</span>
-        </label>
-        <select
-          id="receiverEmail"
-          formControlName="receiverEmail"
-          class="w-full px-3.5 py-2.5 bg-white border rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-400 transition-colors"
-          [class.border-red-400]="validateForm.get('receiverEmail')?.invalid && validateForm.get('receiverEmail')?.dirty"
-          [class.border-gray-300]="!(validateForm.get('receiverEmail')?.invalid && validateForm.get('receiverEmail')?.dirty)"
-        >
-          <option [value]="null" disabled selected>
-            {{ isLoadingUsers ? 'Chargement...' : 'Sélectionnez un bénéficiaire' }}
-          </option>
-          @for (user of users; track user.id) {
-            <option [value]="user.email">{{ user.fullName }} ({{ user.email }})</option>
-          }
-        </select>
-        @if (validateForm.get('receiverEmail')?.invalid && validateForm.get('receiverEmail')?.dirty) {
-          <p class="mt-1 text-xs text-red-500">Veuillez sélectionner un bénéficiaire.</p>
-        }
-      </div>
-
-      <!-- Montant -->
-      <div>
-        <label for="amount" class="block text-sm font-medium text-gray-700 mb-1.5">
-          Montant (DH) <span class="text-red-500">*</span>
-        </label>
-        <div class="relative">
-          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 font-medium text-sm">DH</span>
-          <input
-            id="amount"
-            type="number"
+      <nz-form-item>
+        <nz-form-label nzRequired>Montant (DH)</nz-form-label>
+        <nz-form-control nzErrorTip="Veuillez saisir un montant valide (min. 0,01 DH)!">
+          <nz-input-number
             formControlName="amount"
-            min="0.01"
-            step="0.01"
-            placeholder="0.00"
-            class="w-full pl-11 pr-3.5 py-2.5 bg-white border rounded-lg text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-            [class.border-red-400]="validateForm.get('amount')?.invalid && validateForm.get('amount')?.dirty"
-            [class.border-gray-300]="!(validateForm.get('amount')?.invalid && validateForm.get('amount')?.dirty)"
-          />
-        </div>
-        @if (validateForm.get('amount')?.invalid && validateForm.get('amount')?.dirty) {
-          <p class="mt-1 text-xs text-red-500">Veuillez saisir un montant valide (min. 0,01 DH).</p>
-        }
-      </div>
+            [nzMin]="0.01"
+            [nzStep]="10"
+            style="width: 100%;"
+            nzPlaceHolder="Montant"
+            [nzFormatter]="formatter"
+            [nzParser]="parser"
+          ></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
 
-      <!-- Submit -->
-      <div class="pt-2">
-        <button
-          type="submit"
-          [disabled]="isSubmitting"
-          class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
-        >
-          @if (isSubmitting) {
-            <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
-            </svg>
-          }
-          {{ isSubmitting ? 'Envoi en cours...' : 'Confirmer et Envoyer' }}
+      <div style="margin-top: 16px;">
+        <button nz-button nzType="primary" [nzLoading]="isSubmitting" style="width: 100%;">
+          Confirmer et Envoyer
         </button>
       </div>
 
     </form>
-  </div>
+  </nz-card>
 </div>

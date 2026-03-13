@@ -6,7 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="8599654b-fc86-4a1d-af49-07c567a7142f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/houssam/backend/service/implimentation/TransferServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/houssam/backend/service/implimentation/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/core/services/toast.service.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/features/transfer-create/transfer-create.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/features/transfer-create/transfer-create.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/features/transfer-create/transfer-create.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/features/transfer-create/transfer-create.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/features/transfer-list/transfer-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/features/transfer-list/transfer-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/features/transfer-list/transfer-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/features/transfer-list/transfer-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +38,8 @@
   </component>
   <component name="CopilotUserSelectedModel">
     <selectedModels>
-      <entry key="chat-panel" value="Claude Sonnet 4.6" />
-      <entry key="agent-panel" value="Claude Sonnet 4.6" />
+      <entry key="chat-panel" value="Gemini 3 Pro (Preview)" />
+      <entry key="agent-panel" value="Gemini 3 Pro (Preview)" />
     </selectedModels>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -74,6 +88,7 @@
     "HTTP Request.transfer_app-endpoints | #1.executor": "Run",
     "HTTP Request.transfer_app-endpoints_1 | #1.executor": "Run",
     "HTTP Request.transfer_app-endpoints_3 | #1.executor": "Run",
+    "Maven.backend [package].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -171,7 +186,7 @@
       <workItem from="1773314866629" duration="552000" />
       <workItem from="1773315447353" duration="1670000" />
       <workItem from="1773328249317" duration="12000" />
-      <workItem from="1773328511080" duration="10452000" />
+      <workItem from="1773328511080" duration="13300000" />
     </task>
     <servers />
   </component>
